@@ -113,7 +113,7 @@ def process_video(video_path, font_settings, generate_transcription=True, output
     
     if generate_transcription:
         print("Loading Whisper model...")
-        model = whisper.load_model("base")  # Can use "tiny", "base", "small", "medium", "large"
+        model = whisper.load_model("turbo")  # Can use "tiny", "base", "small", "medium", "large"
         
         print("Generating new transcription...")
         words_with_timestamps = transcribe_with_timestamps(model, video.audio)
