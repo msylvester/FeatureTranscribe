@@ -1,4 +1,4 @@
-```markdown
+
 # Transcribe Feat OpenAI || Google SR
 
 This repository contains two different implementations for automatically adding subtitles to videos using speech recognition. Both tools will transcribe speech and create beautiful, customizable subtitles!
@@ -134,4 +134,3 @@ Feel free to submit issues, fork the repository, and create pull requests for an
 ## 📄 License
 
 This project is open source and available under the MIT License.
-```
