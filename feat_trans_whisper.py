@@ -31,7 +31,9 @@ def create_text_image(text, size, font_settings):
 
     line_height = font_settings['font_size'] + font_settings['line_spacing']
     total_height = len(lines) * line_height
-    start_y = size[1] - total_height - font_settings['bottom_padding']
+    
+    # Changed from bottom padding to top padding
+    start_y = font_settings['top_padding']
     
     for i, line in enumerate(lines):
         line_width = draw.textlength(line, font=font)
@@ -51,7 +53,6 @@ def create_text_image(text, size, font_settings):
         draw.text((x, y), line, fill=font_settings['font_color'], font=font)
     
     return np.array(img)
-
 def transcribe_with_timestamps(model, audio_source):
     """Get transcription with timestamps using Whisper"""
     print("Generating timestamped transcription...")
@@ -157,6 +158,47 @@ def parse_color(color_str):
     except:
         return (255, 255, 255)
 
+# def main():
+#     parser = argparse.ArgumentParser(description='Add transcribed text overlay to video')
+#     parser.add_argument('video_path', help='Path to the video file')
+#     parser.add_argument('--output', help='Output path (optional)')
+#     parser.add_argument('--generate-transcription', action='store_true',
+#                       help='Generate new transcription (if false, will use existing transcription file)')
+    
+#     # Font customization arguments
+#     parser.add_argument('--font-path', default="/Library/Fonts/Arial.ttf",
+#                       help='Path to font file (TTF format)')
+#     parser.add_argument('--font-size', type=int, default=30,
+#                       help='Font size in pixels')
+#     parser.add_argument('--font-color', default='white',
+#                       help='Font color (hex code or name)')
+#     parser.add_argument('--outline-color', default='black',
+#                       help='Outline color (hex code or name)')
+#     parser.add_argument('--outline-width', type=int, default=2,
+#                       help='Width of text outline in pixels')
+#     parser.add_argument('--line-spacing', type=int, default=4,
+#                       help='Spacing between lines in pixels')
+#     parser.add_argument('--bottom-padding', type=int, default=50,
+#                       help='Padding from bottom of screen in pixels')
+#     parser.add_argument('--width-percent', type=float, default=0.8,
+#                       help='Width of text box as percentage of video width (0.0-1.0)')
+    
+#     args = parser.parse_args()
+
+#     font_settings = {
+#         'font_path': args.font_path,
+#         'font_size': args.font_size,
+#         'font_color': parse_color(args.font_color),
+#         'outline_color': parse_color(args.outline_color),
+#         'outline_width': args.outline_width,
+#         'line_spacing': args.line_spacing,
+#         'bottom_padding': args.bottom_padding,
+#         'width_percent': args.width_percent
+#     }
+    
+#     process_video(args.video_path, font_settings, 
+#                  generate_transcription=args.generate_transcription,
+#                  output_path=args.output)
 def main():
     parser = argparse.ArgumentParser(description='Add transcribed text overlay to video')
     parser.add_argument('video_path', help='Path to the video file')
@@ -177,8 +219,8 @@ def main():
                       help='Width of text outline in pixels')
     parser.add_argument('--line-spacing', type=int, default=4,
                       help='Spacing between lines in pixels')
-    parser.add_argument('--bottom-padding', type=int, default=50,
-                      help='Padding from bottom of screen in pixels')
+    parser.add_argument('--top-padding', type=int, default=50,  # Changed from bottom-padding
+                      help='Padding from top of screen in pixels')
     parser.add_argument('--width-percent', type=float, default=0.8,
                       help='Width of text box as percentage of video width (0.0-1.0)')
     
@@ -191,13 +233,12 @@ def main():
         'outline_color': parse_color(args.outline_color),
         'outline_width': args.outline_width,
         'line_spacing': args.line_spacing,
-        'bottom_padding': args.bottom_padding,
+        'top_padding': args.top_padding,  # Changed from bottom_padding
         'width_percent': args.width_percent
     }
     
     process_video(args.video_path, font_settings, 
                  generate_transcription=args.generate_transcription,
                  output_path=args.output)
-
 if __name__ == "__main__":
     main()
