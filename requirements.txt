@@ -1,0 +1,7 @@
+torch>=2.0.0
+openai-whisper
+moviepy
+numpy>=1.23.5
+pathlib
+tqdm
+ffmpeg-python
