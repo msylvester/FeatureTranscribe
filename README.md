@@ -22,6 +22,11 @@ This repository contains two different implementations for automatically adding 
 
 1. First, make sure you have Python 3.7+ installed on your system.
 
+1a. Install dependencies 
+```bash
+pip install -r requirements.txt
+```
+
 2. Install the required packages based on which version you want to use:
 
 For Google Speech Recognition version (`feat_transcribe_v2.py`):
@@ -119,6 +124,28 @@ python feat_trans_whisper.py input.mp4 --output subtitled_video.mp4
 python feat_transcribe_v2.py video.mp4 --bottom-padding 70 --width-percent 0.7
 ```
 
+```bash
+python features_transcribe_v2.py waifu_list.mp4 \
+    --font-size 50 \
+    --font-color yellow \
+    --outline-color black \
+    --bottom-padding 60 \
+    --width-percent 0.9 \
+    --generate-transcription \
+    --font-path "/Users/mikress/TranscribefeatOpenAI/FeatureTranscribe/Montserrat-Black/montserrat/Montserrat-BlackItalic.ttf" \
+    --output waifu_sp_two.mp4
+
+```
+python feat_trans_whisper.py sr_openai.mp4 \
+    --font-size 50 \
+    --font-color yellow \
+    --outline-color black \
+    --bottom-padding 60 \
+    --width-percent 0.9 \
+    --generate-transcription \
+    --font-path "/Users/mikress/TranscribefeatOpenAI/FeatureTranscribe/Montserrat-Black/montserrat/Montserrat-BoldItalic.ttf" \
+    --output sr_openai.mp4
+```
 ## ⚠️ Important Notes
 
 - The Google SR version requires an internet connection for speech recognition
