@@ -125,26 +125,26 @@ python feat_transcribe_v2.py video.mp4 --bottom-padding 70 --width-percent 0.7
 ```
 
 ```bash
-python features_transcribe_v2.py waifu_list.mp4 \
+python features_transcribe_v2.py jan.mp4 \
     --font-size 50 \
-    --font-color yellow \
+    --font-color blue \
     --outline-color black \
-    --bottom-padding 60 \
+    --bottom-padding 300 \
     --width-percent 0.9 \
     --generate-transcription \
     --font-path "/Users/mikress/TranscribefeatOpenAI/FeatureTranscribe/Montserrat-Black/montserrat/Montserrat-BlackItalic.ttf" \
-    --output waifu_sp_two.mp4
+    --output jan20_trans.mp4
 
 ```
-python feat_trans_whisper.py sr_openai.mp4 \
+python feat_trans_whisper.py jan20_presentation.mp4 \
     --font-size 50 \
-    --font-color yellow \
+    --font-color purple \
     --outline-color black \
-    --bottom-padding 60 \
+    --top-padding 500 \
     --width-percent 0.9 \
     --generate-transcription \
     --font-path "/Users/mikress/TranscribefeatOpenAI/FeatureTranscribe/Montserrat-Black/montserrat/Montserrat-BoldItalic.ttf" \
-    --output sr_openai.mp4
+    --output jan_20_trans.mp4
 ```
 ## ⚠️ Important Notes
 
